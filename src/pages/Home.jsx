@@ -43,20 +43,18 @@ const Home = () => {
             {
               productsList.map(product => (
                 <Col onClick={() => (navigate(`/product/${product.id}`))} key={product.id}>
-                  <Card className='grid' style={{ width: '25rem' }}>
+                  <Card className='grid card' style={{ width: '20rem' }}>
                     <div className='image-container'>
                       <Card.Img className='img' variant="top" src={product.images[0].url} />
                     </div>
-                    <Card.Body>
-                      <Card.Title>{product.title}</Card.Title>
+                    <Card.Body className='card-body'>
+                      <Card.Title>{product.brand}</Card.Title>
                       <Card.Text>
-                        {product.description}
+                        <p>{product.title}</p>
+                        <p>Price</p>
+                        <p>$ {product.price}</p>
                       </Card.Text>
                     </Card.Body>
-                    <ListGroup className="list-group-flush">
-                      <ListGroup.Item>$ {product.price}</ListGroup.Item>
-                      <ListGroup.Item>{product.brand}</ListGroup.Item>
-                    </ListGroup>
                   </Card>
                 </Col>
 

@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 const AppNavBar = () => {
     return (
         <div>
-            <Navbar fixed="top" className="navbar navbar-expand-lg navbar-light bg-light" expand="md">
+            <Navbar fixed="top" className="navbar navbar-expand-lg navbar-light bg-light fullscreen" expand="md">
                 <Container>
-                    <Navbar.Brand as={Link} to="/">Ecommerce</Navbar.Brand>
+                    <Navbar.Brand className='navbar-title' as={Link} to="/">Libre Mercadeo</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto">
