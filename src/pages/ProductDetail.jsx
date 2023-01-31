@@ -17,7 +17,7 @@ const ProductDetail = () => {
     }, [])
 
     const nextImage = () => {
-        if (view !== 2){
+        if (view !== 2) {
             setView(view + 1)
         } else if (view === 2) {
             setView(0)
@@ -25,7 +25,7 @@ const ProductDetail = () => {
     }
 
     const previewImage = () => {
-        if (view !== 0){
+        if (view !== 0) {
             setView(view - 1)
         } else if (view === 0) {
             setView(2)
@@ -40,24 +40,27 @@ const ProductDetail = () => {
                 <p>{singleProduct.title}</p>
             </div>
             <div className='product-details'>
-                <div className='galery'>
-                <Button onClick={previewImage} className="primary product-btn"> {"<"} </Button>
-                <div className='product-images' >
-                    <ul className='images-list'>
-                        <li><img className="product-images" src={singleProduct.images?.[view].url} alt="" /></li>
-                    </ul>
+                <div className='main-product'>
+                    <div className='galery'>
+                        <Button onClick={previewImage} className="primary product-btn"> {"<"} </Button>
+                        <div className='product-images' >
+                            <ul className='images-list'>
+                                <li><img className="product-images" src={singleProduct.images?.[view].url} alt="" /></li>
+                            </ul>
+                        </div>
+                        <Button onClick={nextImage} className="primary product-btn"> {">"} </Button>
+                    </div>
+                    <div className='product-description'>
+                        <p className='product-title'>{singleProduct.brand}</p>
+                        <h2>{singleProduct.title}</h2>
+                        <p className='product-description-description'>{singleProduct.description}</p>
+                        <p className='product-title'>Price</p>
+                        <p className='amount'>$ {singleProduct.price}</p>
+                        <p>Quantity</p>
+                        <Button className='primary'>Add to cart</Button>
+                    </div>
                 </div>
-                <Button onClick={nextImage} className="primary product-btn"> {">"} </Button>
-                </div>
-                <div className='product-description'>
-                    <p>{singleProduct.brand}</p>
-                    <h2>{singleProduct.title}</h2>
-                    <p>{singleProduct.description}</p>
-                    <p>Price</p>
-                    <p>$ {singleProduct.price}</p>
-                    <p>Quantity</p>
-                    <Button className='primary'>Add to cart</Button>
-                </div>
+
             </div>
         </div>
     );

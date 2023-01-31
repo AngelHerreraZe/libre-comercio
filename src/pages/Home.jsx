@@ -48,17 +48,16 @@ const Home = () => {
                       <Card.Img className='img' variant="top" src={product.images[0].url} />
                     </div>
                     <Card.Body className='card-body'>
-                      <Card.Title>{product.brand}</Card.Title>
                       <Card.Text>
-                        <p>{product.title}</p>
-                        <p>Price</p>
-                        <p>$ {product.price}</p>
+                        <p className='card-title'>{product.brand}</p>
+                        <p className='card-text'>{product.title}</p>
+                        <p className='card-title'>Price</p>
+                        <p className='card-text'>$ {product.price}</p>
+                        <Button className='cart-btn'><i className='bx bx-cart'></i></Button>
                       </Card.Text>
                     </Card.Body>
                   </Card>
                 </Col>
-
-
               ))
             }
           </Row>

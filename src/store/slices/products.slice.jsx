@@ -35,7 +35,6 @@ export const searchedProductsThunk = (productSearched) => (dispatch) => {
         .finally(() => dispatch(setIsLoading(false)));
 }
 
-
 export const { setProducts  } = productsSlice.actions;
 
 export default productsSlice.reducer;

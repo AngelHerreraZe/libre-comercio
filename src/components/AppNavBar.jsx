@@ -3,6 +3,10 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const AppNavBar = () => {
+    const logout = () => {
+        localStorage.removeItem("token")
+    }
+
     return (
         <div>
             <Navbar fixed="top" className="navbar navbar-expand-lg navbar-light bg-light fullscreen" expand="md">
@@ -14,6 +18,7 @@ const AppNavBar = () => {
                             <Nav.Link as={Link} to="/login">Login</Nav.Link>
                             <Nav.Link as={Link} to="/purchases">Purchases</Nav.Link>
                             <Nav.Link>Cart</Nav.Link>
+                            <Nav.Link onClick={logout}>LOG OUT</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
