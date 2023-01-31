@@ -183,7 +183,7 @@ p {
 
 .galery{
     width: 50%;
-    height: 350px;
+    height: 400px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -193,6 +193,8 @@ p {
 
 .product-description{
     width: 50%;
+    position: relative;
+    height: 400px;
 }
 
 .product-description h2{
@@ -208,6 +210,12 @@ p {
     font-size: 1.3rem;
     font-weight: 600;
     margin-left: 10px;
+}
+
+.product-description-footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .separator {
@@ -278,6 +286,82 @@ p {
     position: absolute;
     right: 30px;
     width: 50px;
+}
+
+.add-cart-btn{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #f85555;
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 15px;
+    width: 100%;
+    border-radius: 0;
+}
+
+.value{
+    width: 3rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.quantity{
+    display: flex;
+    margin-right: 20rem;
+}
+
+.images-preview {
+    height: 70px;
+    margin: 0 10px;
+    padding: 5px;
+    width: 70px;
+}
+
+.previews{
+    display: flex;
+    margin-left: 10rem;
+}
+
+.selected{
+    border: 2px solid #f85555;
+    border-radius: 6px;
+}
+
+.images-preview-img{
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.quantity-button{
+    background: none;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid #dcd9d9;
+    text-align: center;
+    color: #c7c7c7;
+    padding: 0;
+    margin: 0;
+}
+
+.quantity-button:hover{
+    background: none;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid #dcd9d9;
+    text-align: center;
+    color: #c7c7c7;
+    padding: 0;
+    margin: 0;
+}
+
+.related-items{
+    width: 100%;
+    margin-top: 4rem;
 }
 
 @media only screen and (max-width: 768px) {

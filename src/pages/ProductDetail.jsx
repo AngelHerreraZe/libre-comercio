@@ -1,5 +1,6 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { getSingleProductThunk } from '../store/slices/singleProduct.slice';
@@ -11,10 +12,18 @@ const ProductDetail = () => {
     const singleProduct = useSelector(state => state.singleProduct)
     const navigate = useNavigate();
     const [view, setView] = useState(0);
+    const [quantity, setQuantity] = useState(1)
+    const [relatedList, setRelatedList] = useState([]);
 
     useEffect(() => {
         dispacth(getSingleProductThunk(id));
     }, [])
+
+    useEffect(()=>{
+        axios
+            .get(`https://e-commerce-api-v2.academlo.tech/api/v1/products?categoryId=${singleProduct.categoryId}`)
+            .then(res => setRelatedList(res.data))
+    },[singleProduct])
 
     const nextImage = () => {
         if (view !== 2) {
@@ -30,6 +39,16 @@ const ProductDetail = () => {
         } else if (view === 0) {
             setView(2)
         }
+    }
+
+    const munisQuantity = () => {
+        if (quantity != 0) {
+            setQuantity(quantity - 1);
+        }
+    }
+
+    const plusQuantity = () => {
+        setQuantity(quantity + 1);
     }
 
     return (
@@ -54,13 +73,62 @@ const ProductDetail = () => {
                         <p className='product-title'>{singleProduct.brand}</p>
                         <h2>{singleProduct.title}</h2>
                         <p className='product-description-description'>{singleProduct.description}</p>
-                        <p className='product-title'>Price</p>
-                        <p className='amount'>$ {singleProduct.price}</p>
-                        <p>Quantity</p>
-                        <Button className='primary'>Add to cart</Button>
+                        <div className='product-description-footer'>
+                            <div>
+                                <p className='product-title'>Price</p>
+                                <p className='amount'>$ {singleProduct.price}</p>
+                            </div>
+                            <div>
+                                <p className='product-title'>Quantity</p>
+                                <div className='quantity'>
+                                    <Button onClick={munisQuantity} className='quantity-button'><i className='bx bx-minus'></i></Button>
+                                    <div className='value'>{quantity}</div>
+                                    <Button onClick={plusQuantity} className='quantity-button'><i className='bx bx-plus'></i></Button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <Button className='primary add-cart-btn'>Add to cart <i className='bx bx-cart'></i></Button>
                     </div>
                 </div>
-
+            </div>
+            <div className='previews'>
+                <div className={`images-preview ${(view === 0) ? "selected" : []}`}>
+                    <img onClick={() => setView(0)} className='images-preview-img' src={singleProduct.images?.[0].url} alt="" />
+                </div>
+                <div className={`images-preview ${(view === 1) ? "selected" : []}`}>
+                    <img onClick={() => setView(1)} className='images-preview-img' src={singleProduct.images?.[1].url} alt="" />
+                </div>
+                <div className={`images-preview ${(view === 2) ? "selected" : []}`}>
+                    <img onClick={() => setView(2)} className='images-preview-img' src={singleProduct.images?.[2].url} alt="" />
+                </div>
+            </div>
+            <div className='related-items'>
+                <p>Discover similar items</p>
+                <Container>
+                    <Row xs="1" md="3">
+                        {
+                            relatedList.map(product => (
+                                <Col onClick={() => (navigate(`/product/${product.id}`))} key={product.id}>
+                                    <Card className='grid card' style={{ width: '20rem' }}>
+                                        <div className='image-container'>
+                                            <Card.Img className='img' variant="top" src={product.images[0].url} />
+                                        </div>
+                                        <Card.Body className='card-body'>
+                                            <Card.Text>
+                                                <p className='card-title'>{product.brand}</p>
+                                                <p className='card-text'>{product.title}</p>
+                                                <p className='card-title'>Price</p>
+                                                <p className='card-text'>$ {product.price}</p>
+                                                <Button className='cart-btn'><i className='bx bx-cart'></i></Button>
+                                            </Card.Text>
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
+                            ))
+                        }
+                    </Row>
+                </Container>
             </div>
         </div>
     );

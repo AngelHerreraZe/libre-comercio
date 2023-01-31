@@ -9,6 +9,7 @@ export default configureStore({
         isLoading: isLoadingSlice,
         products: productsSlice,
         singleProduct: singleProductSlice,
-        purchases: purchasesSlice
+        purchases: purchasesSlice,
+
     }
 })
