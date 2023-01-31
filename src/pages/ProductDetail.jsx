@@ -17,7 +17,7 @@ const ProductDetail = () => {
 
     useEffect(() => {
         dispacth(getSingleProductThunk(id));
-    }, [])
+    }, [id])
 
     useEffect(()=>{
         axios
@@ -108,18 +108,18 @@ const ProductDetail = () => {
                 <Container>
                     <Row xs="1" md="3">
                         {
-                            relatedList.map(product => (
-                                <Col onClick={() => (navigate(`/product/${product.id}`))} key={product.id}>
+                            relatedList.map(related => (
+                                <Col onClick={() => (navigate(`/product/${related.id}`))} key={related.id}>
                                     <Card className='grid card' style={{ width: '20rem' }}>
                                         <div className='image-container'>
-                                            <Card.Img className='img' variant="top" src={product.images[0].url} />
+                                            <Card.Img className='img' variant="top" src={related.images[0].url} />
                                         </div>
                                         <Card.Body className='card-body'>
                                             <Card.Text>
-                                                <p className='card-title'>{product.brand}</p>
-                                                <p className='card-text'>{product.title}</p>
+                                                <p className='card-title'>{related.brand}</p>
+                                                <p className='card-text'>{related.title}</p>
                                                 <p className='card-title'>Price</p>
-                                                <p className='card-text'>$ {product.price}</p>
+                                                <p className='card-text'>$ {related.price}</p>
                                                 <Button className='cart-btn'><i className='bx bx-cart'></i></Button>
                                             </Card.Text>
                                         </Card.Body>

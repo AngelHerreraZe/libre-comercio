@@ -10,6 +10,5 @@ export default configureStore({
         products: productsSlice,
         singleProduct: singleProductSlice,
         purchases: purchasesSlice,
-
     }
 })

@@ -289,9 +289,7 @@ p {
 }
 
 .add-cart-btn{
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    margin-top: 1rem;
     width: 100%;
     background: #f85555;
     color: #fff;
