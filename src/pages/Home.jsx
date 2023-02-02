@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Button, Card, Col, Container, Form, InputGroup, ListGroup, Row } from 'react-bootstrap';
+import { Button, Card, Col, Container, Form, InputGroup, ListGroup, Row, Toast } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import AsideBar from '../components/AsideBar';
@@ -72,7 +72,6 @@ const Home = () => {
           </Row>
         </Container>
       </div>
-
     </div>
   );
 };

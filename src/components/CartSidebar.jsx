@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Offcanvas } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getCartThunk} from '../store/slices/cart.slice';
+import { deleteItemCartThunk, getCartThunk} from '../store/slices/cart.slice';
 import { purchaseCartThunk } from '../store/slices/purchases.slice';
 
 const CartSidebar = ({ show, handleClose }) => {
@@ -16,6 +16,10 @@ const CartSidebar = ({ show, handleClose }) => {
     cartList.forEach(product => {
         total += product?.product?.price * product.quantity
     });
+
+    const updateCartItem = (item) => {
+
+    }
 
     const checkout = () => {
         dispatch(purchaseCartThunk());
@@ -44,11 +48,11 @@ const CartSidebar = ({ show, handleClose }) => {
         } else{
             return (
                 <div>
-                    <Offcanvas className="cart-body" placement='end' show={show} onHide={handleClose}>
+                    <Offcanvas placement='end' show={show} onHide={handleClose}>
                         <Offcanvas.Header closeButton>
                             <Offcanvas.Title>Carrito de compras</Offcanvas.Title>
                         </Offcanvas.Header>
-                        <Offcanvas.Body>
+                        <Offcanvas.Body className="cart-body">
                             {
                                 cartList.map(item => (
                                     <div className='cart-item' key={item.id}>
@@ -57,16 +61,17 @@ const CartSidebar = ({ show, handleClose }) => {
                                         </div>
                                         <div className='cart-item-info'>
                                             <div>
-                                                <p>{item?.product.title}</p>
+                                                <p>{item?.product?.title}</p>
                                                 <div className='quantity-cart'>
                                                     <Button onClick={munisQuantity} className='quantity-button'><i className='bx bx-minus'></i></Button>
-                                                    <div className='value'>{item.quantity}</div>
+                                                    <div className='value'>{item?.quantity}</div>
                                                     <Button onClick={plusQuantity} className='quantity-button'><i className='bx bx-plus'></i></Button>
                                                 </div>
     
                                             </div>
                                         </div>
-                                        <p>total {(item.quantity * item.product.price)}</p>
+                                        <p>total {(item?.quantity * item?.product?.price)}</p>
+                                        <i onClick={() => dispatch(deleteItemCartThunk(item.id))} className='bx bx-trash' style={{color:"#ff0000"}}></i>
                                     </div>
                                 ))
                             }

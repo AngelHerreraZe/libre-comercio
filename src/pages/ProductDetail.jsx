@@ -15,19 +15,12 @@ const ProductDetail = () => {
     const navigate = useNavigate();
     const [view, setView] = useState(0);
     const [quantity, setQuantity] = useState(1);
-    const addtoCart = (id) => {
-        const product = {
-            item: singleProduct.id,
-            quantity: quantity
-        }
-        dispatch(addToCartThunk(product));
-    }
     useEffect(() => {
         dispatch(getSingleProductThunk(id));
     }, [id])
 
     useEffect(()=>{
-        dispatch(getRelatedProductsThunk(singleProduct?.categoryId));
+        dispatch(getRelatedProductsThunk(singleProduct.categoryId));
     },[singleProduct])
 
     const nextImage = () => {
@@ -54,6 +47,14 @@ const ProductDetail = () => {
 
     const plusQuantity = () => {
         setQuantity(quantity + 1);
+    }
+
+    const addtoCart = () => {
+        const product = {
+            quantity: quantity,
+            productId: singleProduct.id
+        }
+        dispatch(addToCartThunk(product));
     }
 
     return (
@@ -114,7 +115,6 @@ const ProductDetail = () => {
                     <Row xs="1" md="3">
                         {
                             relatedProducts.map(related => (
-                                <>
                                 <Col key={related.id}>
                                     <Card onClick={() => (navigate(`/product/${related.id}`))} className='grid card' style={{ width: '20rem' }}>
                                         <div className='image-container'>
@@ -128,10 +128,9 @@ const ProductDetail = () => {
                                                 <span className='card-text'>$ {related.price} <br /></span>
                                             </Card.Text>
                                         </Card.Body>
-                                        <Button onClick={() => addtoCart(singleProduct.id)} className='cart-btn'><i className='bx bx-cart'></i></Button>
+                                        <Button onClick={() => addtoCart()} className='cart-btn'><i className='bx bx-cart'></i></Button>
                                     </Card>
                                 </Col>
-                                </>
                             ))
                             
                         }

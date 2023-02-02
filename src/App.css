@@ -388,7 +388,6 @@ p {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 1rem auto;
 }
 
 .cart-item-info{
@@ -417,13 +416,16 @@ p {
     margin: 0;
 }
 
+.cart-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
 
 .cart-footer {
-    position: absolute;
-    bottom: 1rem;
     display: flex;
-    width: 90%;
+    width: 100%;
     gap: 2rem;
     flex-direction: column;
     border-top: 1px solid #dcd9d9;
@@ -485,6 +487,48 @@ p {
     bottom: 1rem;
     z-index: 1;
 }
+
+.confirmation{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.confirmation-card{
+    width: 60%;
+    height: 20rem;
+    gap: 3rem;
+    border-radius: 10px;
+    background-color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.success{
+    font-size: 90px;
+}
+
+.hide{
+    display: none;
+}
+
+.close{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 45px;
+}
+
 @media only screen and (max-width: 768px) {
     .aside {
         display: none;

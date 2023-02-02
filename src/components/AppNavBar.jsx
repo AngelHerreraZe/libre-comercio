@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import { Button, Container, Nav, Navbar, Offcanvas } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import CartSidebar from './CartSidebar';
 
 const AppNavBar = () => {
+
+    const navigate = useNavigate();
+
     const logout = () => {
         localStorage.removeItem("token")
+        alert("Sesión cerrada correctamente")
+        navigate("/")
     }
 
     const [show, setShow] = useState(false);
