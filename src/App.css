@@ -383,16 +383,16 @@ p {
     font-size: 5.5rem;
 }
 
-.cart-item{
+.cart-item {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.cart-item-info{
+.cart-item-info {
     display: flex;
-    flex-direction: row;    
+    flex-direction: row;
 }
 
 .images-preview-cart {
@@ -408,7 +408,7 @@ p {
     object-fit: contain;
 }
 
-.quantity-cart{
+.quantity-cart {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -416,7 +416,7 @@ p {
     margin: 0;
 }
 
-.cart-body{
+.cart-body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -431,7 +431,7 @@ p {
     border-top: 1px solid #dcd9d9;
 }
 
-.cart-footer-text{
+.cart-footer-text {
     margin-top: 1rem;
     display: flex;
     flex-direction: row;
@@ -446,21 +446,21 @@ p {
     width: 100%;
 }
 
-.footer-title{
+.footer-title {
     color: #c7c7c7;
 }
 
-.footer-subtitle{
+.footer-subtitle {
     font-weight: bold;
 }
 
-.purchases{
+.purchases {
     margin: 0 auto;
     width: 60%;
     margin-top: 7rem;
 }
 
-.purchases-body{
+.purchases-body {
     display: flex;
     margin-top: 4rem;
     flex-direction: column;
@@ -468,7 +468,7 @@ p {
     justify-items: center;
 }
 
-.purchase-card{
+.purchase-card {
     display: flex;
     width: 100%;
     flex-direction: row;
@@ -477,18 +477,18 @@ p {
     margin: 1rem;
 }
 
-.relative{
+.relative {
     position: relative;
 }
 
-.btn-cointainer{
+.btn-cointainer {
     position: absolute;
     right: 1rem;
     bottom: 1rem;
     z-index: 1;
 }
 
-.confirmation{
+.confirmation {
     position: fixed;
     top: 0;
     left: 0;
@@ -501,7 +501,7 @@ p {
     z-index: 9999;
 }
 
-.confirmation-card{
+.confirmation-card {
     width: 60%;
     height: 20rem;
     gap: 3rem;
@@ -514,15 +514,15 @@ p {
     position: relative;
 }
 
-.success{
+.success {
     font-size: 90px;
 }
 
-.hide{
+.hide {
     display: none;
 }
 
-.close{
+.close {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -532,5 +532,94 @@ p {
 @media only screen and (max-width: 768px) {
     .aside {
         display: none;
+    }
+
+    .home {
+        position: absolute;
+        top: 5rem;
+        left: 0;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .btn-cointainer {
+        position: absolute;
+        right: 3rem;
+        bottom: 1rem;
+        z-index: 1;
+    }
+
+    .main-product {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .product-images {
+        width: 50%;
+        max-height: 400px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .images-list li {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .galery {
+        width: 100%;
+    }
+
+    .previews{
+        margin-top: -30rem;
+        margin-left: 10%;
+    }
+
+    .product-description-description{
+        margin-bottom: 0!important;
+    }
+
+    .related-items{
+        margin-top: 40rem;
+    }
+
+    .login {
+        position: absolute;
+        top: 7rem;
+        left: 10%;
+        height: 50vh;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .login-text {
+        font-size: 1.5rem;
+        font-weight: 500;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+
+    .form{
+        width: 80% !important;
+    }
+
+    .row-cols-1{
+        margin-left: 8%;
+    }
+
+    .purchase-card{
+        flex-direction: column;
     }
 }

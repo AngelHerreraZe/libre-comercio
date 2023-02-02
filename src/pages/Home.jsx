@@ -59,7 +59,6 @@ const Home = () => {
                         <span className='card-text'>{product.title} <br /> </span>
                         <span className='card-title'>Price <br /> </span>
                         <span className='card-text'>$ {product.price} <br /> </span>
-
                       </Card.Text>
                     </Card.Body>
                   </Card>

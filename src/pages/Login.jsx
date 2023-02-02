@@ -57,8 +57,8 @@ const Login = () => {
                     <div className='test-item'><i className='bx bx-envelope'></i><p>john@gmail.com</p></div>
                     <div className='test-item'><i className='bx bx-lock-alt' ></i><p>john1234</p></div>
                 </div>
-                <Form onSubmit={handleSubmit(submit)}>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form className='form' onSubmit={handleSubmit(submit)}>
+                    <Form.Group className="mb-12 " controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control {...register("email")} type="email" placeholder="Enter email" />
                     </Form.Group>
