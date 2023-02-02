@@ -4,23 +4,29 @@ import { Button, Card, Col, Container, Form, InputGroup, ListGroup, Row } from '
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import AsideBar from '../components/AsideBar';
+import { addToCartThunk } from '../store/slices/cart.slice';
 import { getProductsThunk, searchedProductsThunk } from '../store/slices/products.slice';
 
 const Home = () => {
 
-  const dispacth = useDispatch();
+  const dispatch = useDispatch();
   const productsList = useSelector(state => state.products)
   const navigate = useNavigate();
   const [productSearch, setProductSearch] = useState("");
 
   useEffect(() => {
-    dispacth(getProductsThunk());
+    dispatch(getProductsThunk());
   }, [])
 
-
+  const addToCart = (id) => {
+    const product = {
+      quantity: 1,
+      productId: id
+    };
+    dispatch(addToCartThunk(product));
+  }
 
   return (
-
     <div>
       <AsideBar />
       <div className='home'>
@@ -33,7 +39,7 @@ const Home = () => {
               value={productSearch}
               onChange={e => setProductSearch(e.target.value)}
             />
-            <Button onClick={() => dispacth(searchedProductsThunk(productSearch.toString().toLowerCase()))} variant="outline-primary" id="btnSearch">
+            <Button onClick={() => dispatch(searchedProductsThunk(productSearch.toString().toLowerCase()))} variant="outline-primary" id="btnSearch">
               Search
             </Button>
           </InputGroup>
@@ -42,21 +48,24 @@ const Home = () => {
           <Row xs="1" md="3">
             {
               productsList.map(product => (
-                <Col onClick={() => (navigate(`/product/${product.id}`))} key={product.id}>
-                  <Card className='grid card' style={{ width: '20rem' }}>
+                <Col className='relative' key={product.id}>
+                  <Card onClick={() => (navigate(`/product/${product.id}`))} className='grid card' style={{ width: '20rem' }}>
                     <div className='image-container'>
                       <Card.Img className='img' variant="top" src={product.images[0].url} />
                     </div>
                     <Card.Body className='card-body'>
                       <Card.Text>
-                        <p className='card-title'>{product.brand}</p>
-                        <p className='card-text'>{product.title}</p>
-                        <p className='card-title'>Price</p>
-                        <p className='card-text'>$ {product.price}</p>
-                        <Button className='cart-btn'><i className='bx bx-cart'></i></Button>
+                        <span className='card-title'>{product.brand} <br /> </span>
+                        <span className='card-text'>{product.title} <br /> </span>
+                        <span className='card-title'>Price <br /> </span>
+                        <span className='card-text'>$ {product.price} <br /> </span>
+
                       </Card.Text>
                     </Card.Body>
                   </Card>
+                  <div className='btn-cointainer'>
+                    <Button onClick={() => dispatch(addToCart(product.id))} className='cart-btn'><i className='bx bx-cart'></i></Button>
+                  </div>
                 </Col>
               ))
             }

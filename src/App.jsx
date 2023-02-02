@@ -25,7 +25,6 @@ function App() {
           <Route element={<ProtectedRoutes />}>
             <Route path='/purchases' element={<Purchases />} />
           </Route>
-
         </Routes>
       </HashRouter>
     </div>

@@ -3,26 +3,31 @@ import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { addToCartThunk } from '../store/slices/cart.slice';
+import { getRelatedProductsThunk } from '../store/slices/relatedProducts.slice';
 import { getSingleProductThunk } from '../store/slices/singleProduct.slice';
 
 const ProductDetail = () => {
-
     const { id } = useParams();
-    const dispacth = useDispatch();
+    const dispatch = useDispatch();
     const singleProduct = useSelector(state => state.singleProduct)
+    const relatedProducts = useSelector(state => state.relatedProducts)
     const navigate = useNavigate();
     const [view, setView] = useState(0);
-    const [quantity, setQuantity] = useState(1)
-    const [relatedList, setRelatedList] = useState([]);
-
+    const [quantity, setQuantity] = useState(1);
+    const addtoCart = (id) => {
+        const product = {
+            item: singleProduct.id,
+            quantity: quantity
+        }
+        dispatch(addToCartThunk(product));
+    }
     useEffect(() => {
-        dispacth(getSingleProductThunk(id));
+        dispatch(getSingleProductThunk(id));
     }, [id])
 
     useEffect(()=>{
-        axios
-            .get(`https://e-commerce-api-v2.academlo.tech/api/v1/products?categoryId=${singleProduct.categoryId}`)
-            .then(res => setRelatedList(res.data))
+        dispatch(getRelatedProductsThunk(singleProduct?.categoryId));
     },[singleProduct])
 
     const nextImage = () => {
@@ -88,7 +93,7 @@ const ProductDetail = () => {
                             </div>
 
                         </div>
-                        <Button className='primary add-cart-btn'>Add to cart <i className='bx bx-cart'></i></Button>
+                        <Button onClick={addtoCart} className='primary add-cart-btn'>Add to cart <i className='bx bx-cart'></i></Button>
                     </div>
                 </div>
             </div>
@@ -108,24 +113,27 @@ const ProductDetail = () => {
                 <Container>
                     <Row xs="1" md="3">
                         {
-                            relatedList.map(related => (
-                                <Col onClick={() => (navigate(`/product/${related.id}`))} key={related.id}>
-                                    <Card className='grid card' style={{ width: '20rem' }}>
+                            relatedProducts.map(related => (
+                                <>
+                                <Col key={related.id}>
+                                    <Card onClick={() => (navigate(`/product/${related.id}`))} className='grid card' style={{ width: '20rem' }}>
                                         <div className='image-container'>
                                             <Card.Img className='img' variant="top" src={related.images[0].url} />
                                         </div>
                                         <Card.Body className='card-body'>
                                             <Card.Text>
-                                                <p className='card-title'>{related.brand}</p>
-                                                <p className='card-text'>{related.title}</p>
-                                                <p className='card-title'>Price</p>
-                                                <p className='card-text'>$ {related.price}</p>
-                                                <Button className='cart-btn'><i className='bx bx-cart'></i></Button>
+                                                <span className='card-title'>{related.brand} <br /> </span>
+                                                <span className='card-text'>{related.title} <br /> </span>
+                                                <span className='card-title'>Price <br /> </span>
+                                                <span className='card-text'>$ {related.price} <br /></span>
                                             </Card.Text>
                                         </Card.Body>
+                                        <Button onClick={() => addtoCart(singleProduct.id)} className='cart-btn'><i className='bx bx-cart'></i></Button>
                                     </Card>
                                 </Col>
+                                </>
                             ))
+                            
                         }
                     </Row>
                 </Container>

@@ -7,11 +7,15 @@ import { filterProductsCategoryThunk } from '../store/slices/products.slice';
 const AsideBar = () => {
     const [categories, setCategories] = useState([]);
     const dispatch = useDispatch();
+
+
     useEffect(() => {
         axios
             .get('https://e-commerce-api-v2.academlo.tech/api/v1/categories')
             .then(res => setCategories(res.data));
     }, [])
+
+
     return (
         <div className='aside'>
             <Accordion defaultActiveKey="0">
@@ -20,11 +24,11 @@ const AsideBar = () => {
                     <Accordion.Body>
                         <div className='filter-item'>
                             <label htmlFor="min-filter">From:</label>
-                            <input type="number" id='min-filter' />
+                            <input type="number" id='min-filter' placeholder="min"/>
                         </div>
                         <div className='filter-item' style={{ gap: "2.3rem" }}>
                             <label htmlFor="max-filter">To: </label>
-                            <input type="number" id='max-filter' />
+                            <input type="number" id='max-filter'placeholder="max"/>
                         </ div>
                         <div className='btn-price'><Button>Filter Price</Button></div>
                     </Accordion.Body>
