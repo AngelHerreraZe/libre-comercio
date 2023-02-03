@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Offcanvas } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { deleteItemCartThunk, getCartThunk} from '../store/slices/cart.slice';
+import { deleteItemCartThunk, getCartThunk, modifyCartThunk, } from '../store/slices/cart.slice';
 import { purchaseCartThunk } from '../store/slices/purchases.slice';
 
 const CartSidebar = ({ show, handleClose }) => {
@@ -10,29 +10,35 @@ const CartSidebar = ({ show, handleClose }) => {
     const navigate = useNavigate();
     const cartList = useSelector(state => state.cart);
     const dispatch = useDispatch();
-    const [quantity, setQuantity] = useState(1);
+    const [quantity, setCuantity] = useState(0);
+
     let total = 0;
 
     cartList.forEach(product => {
         total += product?.product?.price * product.quantity
     });
 
-    const updateCartItem = (item) => {
+    const minusQuantity = (id, itemQuantity) =>{
+        if (itemQuantity === 1) {
+            dispatch(deleteItemCartThunk(id));
+        }
+        const quantity = {
+            quantity: (itemQuantity - 1)
+        }
+        dispatch(modifyCartThunk(id, quantity));
+    }
 
+    const plusQuantity = (id, itemQuantity) => {
+        const quantity = {
+            quantity: (itemQuantity + 1)
+        }
+        dispatch(modifyCartThunk(id, quantity));   
     }
 
     const checkout = () => {
         dispatch(purchaseCartThunk());
         navigate("/purchases");
         handleClose();
-    }
-
-    const munisQuantity = () => {
-        setQuantity(quantity - 1);
-    }
-
-    const plusQuantity = () => {
-        setQuantity(quantity + 1);
     }
 
     useEffect(() => {
@@ -61,11 +67,12 @@ const CartSidebar = ({ show, handleClose }) => {
                                         </div>
                                         <div className='cart-item-info'>
                                             <div>
+                                                {item.id}
                                                 <p>{item?.product?.title}</p>
                                                 <div className='quantity-cart'>
-                                                    <Button onClick={munisQuantity} className='quantity-button'><i className='bx bx-minus'></i></Button>
+                                                    <Button onClick={() => minusQuantity(item.id, item.quantity)} className='quantity-button'><i className='bx bx-minus'></i></Button>
                                                     <div className='value'>{item?.quantity}</div>
-                                                    <Button onClick={plusQuantity} className='quantity-button'><i className='bx bx-plus'></i></Button>
+                                                    <Button onClick={() => plusQuantity(item.id, item.quantity)} className='quantity-button'><i className='bx bx-plus'></i></Button>
                                                 </div>
     
                                             </div>

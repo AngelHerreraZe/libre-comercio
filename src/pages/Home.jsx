@@ -63,7 +63,7 @@ const Home = () => {
                     </Card.Body>
                   </Card>
                   <div className='btn-cointainer'>
-                    <Button onClick={() => dispatch(addToCart(product.id))} className='cart-btn'><i className='bx bx-cart'></i></Button>
+                    <Button onClick={() => addToCart(product.id)} className='cart-btn'><i className='bx bx-cart'></i></Button>
                   </div>
                 </Col>
               ))
