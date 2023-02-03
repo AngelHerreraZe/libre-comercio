@@ -44,7 +44,7 @@ const Home = () => {
             </Button>
           </InputGroup>
         </div>
-        <Container>
+        <Container >
           <Row xs="1" md="3">
             {
               productsList.map(product => (
@@ -61,10 +61,10 @@ const Home = () => {
                         <span className='card-text'>$ {product.price} <br /> </span>
                       </Card.Text>
                     </Card.Body>
+                    <div className='btn-cointainer'>
+                      <Button onClick={() => addToCart(product.id)} className='cart-btn'><i className='bx bx-cart'></i></Button>
+                    </div>
                   </Card>
-                  <div className='btn-cointainer'>
-                    <Button onClick={() => addToCart(product.id)} className='cart-btn'><i className='bx bx-cart'></i></Button>
-                  </div>
                 </Col>
               ))
             }

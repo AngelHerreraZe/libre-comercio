@@ -132,7 +132,6 @@ const ProductDetail = () => {
                                     </Card>
                                 </Col>
                             ))
-                            
                         }
                     </Row>
                 </Container>

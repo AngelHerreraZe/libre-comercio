@@ -10,7 +10,6 @@ const CartSidebar = ({ show, handleClose }) => {
     const navigate = useNavigate();
     const cartList = useSelector(state => state.cart);
     const dispatch = useDispatch();
-    const [quantity, setCuantity] = useState(0);
 
     let total = 0;
 

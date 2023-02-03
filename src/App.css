@@ -420,6 +420,7 @@ p {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    z-index: 99999;
 }
 
 
@@ -484,8 +485,8 @@ p {
 .btn-cointainer {
     position: absolute;
     right: 1rem;
-    bottom: 1rem;
-    z-index: 1;
+    bottom: 0rem;
+    z-index: 2;
 }
 
 .confirmation {
@@ -498,7 +499,7 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
+    z-index: 1;
 }
 
 .confirmation-card {
@@ -548,8 +549,8 @@ p {
 
     .btn-cointainer {
         position: absolute;
-        right: 3rem;
-        bottom: 1rem;
+        right: -1rem;
+        bottom: -1rem;
         z-index: 1;
     }
 
