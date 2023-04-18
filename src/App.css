@@ -538,8 +538,8 @@ p {
 
     .home {
         position: absolute;
-        top: 5rem;
-        left: 0;
+        top: 4rem;
+        left: -1;
         width: 100vw;
         display: flex;
         flex-direction: column;
