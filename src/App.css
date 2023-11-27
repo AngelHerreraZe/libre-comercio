@@ -537,6 +537,7 @@ p {
         width: 100%;
     }
     
+
     p {
         font-size: .8rem;
     }
@@ -552,7 +553,7 @@ p {
     .home {
         position: absolute;
         top: 4rem;
-        left: -1;
+        left: 50;
         width: 100vw;
         display: flex;
         flex-direction: column;
