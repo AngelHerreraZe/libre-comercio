@@ -613,6 +613,10 @@ p {
         margin-left: -5rem;
     }
 
+    .nav {
+        width: 50%;
+    }
+
     .login {
         position: absolute;
         top: 7rem;
@@ -637,7 +641,7 @@ p {
     }
 
     .row-cols-1 {
-        margin-left: 8%;
+        
     }
 
     .purchase-card {
@@ -649,7 +653,11 @@ p {
     }
 
     .product-detail{
-        width: 90%;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .main-product {

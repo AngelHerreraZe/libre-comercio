@@ -49,8 +49,8 @@ const Home = () => {
             {
               productsList.map(product => (
                 <Col className='relative' key={product.id}>
-                  <Card onClick={() => (navigate(`/product/${product.id}`))} className='grid card' style={{ width: '20rem' }}>
-                    <div className='image-container'>
+                  <Card onClick={() => (navigate(`/product/${product.id}`))} className='grid card' style={{ width: '20rem', alignContent: 'Center', alignItems: 'Center'}}>
+                    <div className='image-container' style={{width: '100%'}}>
                       <Card.Img className='img' variant="top" src={product.images[0].url} />
                     </div>
                     <Card.Body className='card-body'>
