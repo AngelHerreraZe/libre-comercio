@@ -45,7 +45,7 @@ const Home = () => {
           </InputGroup>
         </div>
         <Container >
-          <Row xs="1" md="2" lg="3">
+          <Row xs="1" md="2" lg="2" xxl="3">
             {
               productsList.map(product => (
                 <Col className='relative' key={product.id}>

@@ -116,7 +116,7 @@ const ProductDetail = () => {
                         {
                             relatedProducts.map(related => (
                                 <Col key={related.id}>
-                                    <Card onClick={() => (navigate(`/product/${related.id}`))} className='grid card' style={{ width: '20rem' }}>
+                                    <Card onClick={() => (navigate(`/product/${related.id}`))} className='grid card' style={{ width: '16rem' }}>
                                         <div className='image-container'>
                                             <Card.Img className='img' variant="top" src={related.images[0].url} />
                                         </div>
