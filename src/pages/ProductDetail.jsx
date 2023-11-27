@@ -115,7 +115,7 @@ const ProductDetail = () => {
                     <Row xs="1" md="3">
                         {
                             relatedProducts.map(related => (
-                                <Col key={related.id}>
+                                <Col key={related.id} style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
                                     <Card onClick={() => (navigate(`/product/${related.id}`))} className='grid card' style={{ width: '16rem' }}>
                                         <div className='image-container'>
                                             <Card.Img className='img' variant="top" src={related.images[0].url} />

@@ -611,7 +611,10 @@ p {
 
     .related-items {
         margin-top: 45rem;
-        margin-left: -5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     .nav {
@@ -641,10 +644,6 @@ p {
         width: 80% !important;
     }
 
-    .row-cols-1 {
-        
-    }
-
     .purchase-card {
         flex-direction: column;
     }
@@ -654,11 +653,12 @@ p {
     }
 
     .product-detail{
-        width: 50%;
+        width: 80%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        overflow-y: hidden;
     }
 
     .main-product {
